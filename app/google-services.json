@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "438345734960",
+    "project_id": "tudijitapp-3e400",
+    "storage_bucket": "tudijitapp-3e400.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438345734960:android:497cb501db8873f78d86f5",
+        "android_client_info": {
+          "package_name": "com.example.tudijit2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPUyuxhLSy-N4lYIUpH4imahpVKlIlhw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
