@@ -1,0 +1,16 @@
+
+Ukotlin:S1172C"1Remove this unused function parameter "schoolID".(„©ò¶øÿÿÿÿ8ò¹Ïßè1
+Pkotlin:S1172”"0Remove this unused function parameter "context".(åÖ¤ò8ºÏßè1
+akotlin:S1172§"<Use "_" instead of this unused lambda parameter "exception".(³Ø˜·úÿÿÿÿ8ƒºÏßè1
+kkotlin:S107ğ"GThis function has 9 parameters, which is greater than the 7 authorized.(öÖã¹ıÿÿÿÿ8–ºÏßè1
+Nkotlin:S1481"*Remove this unused "years" local variable.(çÚî†ùÿÿÿÿ8 ºÏßè1
+Okotlin:S1481~"+Remove this unused "months" local variable.(©ºşåøÿÿÿÿ8 ºÏßè1
+9kotlin:S11283"Remove this unused import.(³¹¦–8¥ºÏßè1
+9kotlin:S11288"Remove this unused import.(´Â¢†8¥ºÏßè1
+vkotlin:S3776C"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(„©ò¶øÿÿÿÿ8¬ºÏßè1
+Kkotlin:S6519»"+Replace "equals" with binary operator "==".(û¨ºÃ8¶ºÏßè1
+Kkotlin:S6519»"+Replace "equals" with binary operator "==".(û¨ºÃ8¶ºÏßè1
+Kkotlin:S6519»"+Replace "equals" with binary operator "==".(û¨ºÃ8¶ºÏßè1
+Kkotlin:S6519¹"+Replace "equals" with binary operator "==".(²˜Â®8¶ºÏßè1
+Kkotlin:S6519¹"+Replace "equals" with binary operator "==".(²˜Â®8¶ºÏßè1
+Kkotlin:S6519¹"+Replace "equals" with binary operator "==".(²˜Â®8·ºÏßè1

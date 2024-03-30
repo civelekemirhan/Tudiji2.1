@@ -337,6 +337,9 @@ fun RegisterPage(
                                 popUpTo(Screen.RegisterPage.route) {
                                     inclusive = true
                                 }
+                                popUpTo(Screen.LoginPage.route){
+                                    inclusive=true
+                                }
                             }
 
                         }

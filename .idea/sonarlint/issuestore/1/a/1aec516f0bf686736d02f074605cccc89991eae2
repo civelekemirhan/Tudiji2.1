@@ -1,0 +1,20 @@
+
+okotlin:S1172ï"0Remove this unused function parameter "context".(ìçÄ–J$14ca8cf2-d459-4af7-9bba-775f0e85468d
+skotlin:S1172ý"4Use "_" instead of this unused lambda parameter "e".(–ñ”ÏJ$48ad0a7f-8e59-45e8-812b-114b375ba410
+€kotlin:S6619Í"<Remove this useless null-safe access ?., it always succeeds.(ÍæãÔúÿÿÿÿJ$2c47ab40-98a9-4850-b0d1-21f28e44b05f
+ikotlin:S1481ã"*Remove this unused "error" local variable.(ðÿöµJ$e8845367-63dc-43cc-bd23-79e14260e38f
+kkotlin:S1481Ë",Remove this unused "success" local variable.(ÔŒãüJ$39f2df55-9933-4e3b-99bc-098bfca2e2b0
+kkotlin:S1481O".Remove this unused "darkTheme" local variable.(ÒýÙRJ$a864081c-3edd-4097-bfe9-bd82fdb7a0be
+]kotlin:S1128"Remove this unused import.(™¬±öúÿÿÿÿJ$2fc5b484-c71b-47aa-93cf-1126a969d982
+]kotlin:S1128"Remove this unused import.(‘ôÏ þÿÿÿÿJ$4becc72a-72c9-4e16-b070-386ed3c531b2
+]kotlin:S1128!"Remove this unused import.(Çâ×ßüÿÿÿÿJ$9d572966-f08e-449a-ab66-b421626fda0a
+]kotlin:S1128#"Remove this unused import.(•“õÿþÿÿÿÿJ$56aca5c7-7238-4034-b479-a09d3b64e139
+Xkotlin:S1128)"Remove this unused import.(®©Ô”J$65d6008f-8285-4bb5-8e0a-6f553d8dd221
+Xkotlin:S1128,"Remove this unused import.(î±‚ºJ$c3646a38-f4ca-47d1-a1d5-e4a4adac5973
+Xkotlin:S1128."Remove this unused import.(íí›J$5f11e8e6-5a62-4ed0-a292-38acce203966
+Xkotlin:S1128="Remove this unused import.(°°íÆJ$f1ca4ef8-107c-4d8f-9e2d-e801b362f52e
+kotlin:S3776A"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(ý¿“J$9a9c3056-63c6-4ba8-b16d-7df38a960735
+okotlin:S6519•"+Replace "equals" with binary operator "==".(«øÞÕþÿÿÿÿJ$07f8f2c7-ba2b-4650-a7c6-6043f5874403
+okotlin:S6519•"+Replace "equals" with binary operator "==".(«øÞÕþÿÿÿÿJ$cd2abdfb-2ebd-45ce-ba07-2b456dc98304
+okotlin:S6519•"+Replace "equals" with binary operator "==".(«øÞÕþÿÿÿÿJ$c2fd9943-38d9-4ea6-9f2b-4a2a937823f2
+okotlin:S6519•"+Replace "equals" with binary operator "==".(«øÞÕþÿÿÿÿJ$1adc305f-d142-4e7b-936f-31d03854d79a

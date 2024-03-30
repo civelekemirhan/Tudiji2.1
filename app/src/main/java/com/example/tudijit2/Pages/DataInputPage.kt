@@ -189,16 +189,10 @@ fun DataInputPage(
                 }
             }
 
-
-
-                for (a in schools){
+            for (a in schools){
                     schoolname=a.schoolName
                 }
-
-
-
-
-            InputCustom(schoolName = schoolname, schoolID = "")
+            InputCustom(schoolName = schoolname, schoolID = "",navController)
 
         }
 

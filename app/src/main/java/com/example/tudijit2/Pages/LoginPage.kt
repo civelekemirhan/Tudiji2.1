@@ -62,6 +62,7 @@ import com.example.tudijit2.ui.theme.MyWhite
 import com.example.tudijit2.ui.theme.myButtonColor
 import com.example.tudijit2.ui.theme.newBackground
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
@@ -70,6 +71,7 @@ import kotlinx.coroutines.launch
 @Composable
 
 fun LoginPage(navController: NavHostController, viewModel: SignInViewModel = hiltViewModel()) {
+
 
     val imeState = rememberImeState()
     val scrollState = rememberScrollState()
@@ -217,36 +219,6 @@ fun LoginPage(navController: NavHostController, viewModel: SignInViewModel = hil
                 cursorColor = Color.White,
             )
         )
-
-
-        Row(
-            modifier = Modifier.width(350.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            Checkbox(
-                checked = isCheck,
-                onCheckedChange = { isCheck = it },
-                colors = CheckboxDefaults.colors(
-                    checkedColor = myButtonColor,
-                    disabledCheckedColor = myButtonColor,
-
-                )
-                )
-            
-            TextButton(onClick = {
-                isCheck=!isCheck
-            }) {
-                Text(
-                    text = "Beni Hatırla",
-                    color = Color.White,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp
-                )
-            }
-
-
-        }
         Spacer(modifier = Modifier.padding(10.dp))
 
         Button(

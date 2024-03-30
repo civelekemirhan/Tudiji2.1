@@ -17,6 +17,7 @@ import com.example.tudijit2.Pages.SplashScreen
 import com.example.tudijit2.Pages.VerificationPage
 import com.example.tudijit2.dialog.DialogViewModel
 import com.example.tudijit2.models.Wastes
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable

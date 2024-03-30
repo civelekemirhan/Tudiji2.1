@@ -31,10 +31,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
@@ -46,24 +48,34 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import com.example.tudijit2.Navigations.Screen
 import com.example.tudijit2.models.Wastes
 import com.example.tudijit2.ui.theme.newBackground
 import com.google.android.gms.common.internal.Constants
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InputCustom(schoolName: String, schoolID: String) {
+fun InputCustom(schoolName: String, schoolID: String,navController: NavHostController) {
     val context = LocalContext.current
     var user = Firebase.auth.currentUser?.uid
+    var scope= rememberCoroutineScope()
     var paperCount by remember { mutableStateOf("") }
     var metalCount by remember { mutableStateOf("") }
     var plasticCount by remember { mutableStateOf("") }
     var glassCount by remember { mutableStateOf("") }
     val maxLength = 15
+    var isThere:Boolean by remember {
+        mutableStateOf(false)
+    }
 
     var expanded by remember { mutableStateOf(false) }
     var suggestions = ArrayList<String>()
@@ -107,11 +119,20 @@ fun InputCustom(schoolName: String, schoolID: String) {
     else
         Icons.Filled.KeyboardArrowDown
 
-    
 
-
-
-
+    FirebaseApp.initializeApp(context)
+    val firestore = FirebaseFirestore.getInstance()
+    val wastesCollection = firestore.collection("WASTES")
+    val months = remember { mutableStateListOf<String>() }
+    val years = remember { mutableStateListOf<String>() }
+    var fetchedData = remember { mutableStateListOf<String>() }
+    monthAndYearDataInformation(
+        context = context,
+        scope = scope,
+        user = user,
+        fetchedData=fetchedData,
+        wastesCollection = wastesCollection
+    )
     Card(
         modifier = Modifier
             .fillMaxHeight()
@@ -425,17 +446,40 @@ fun InputCustom(schoolName: String, schoolID: String) {
                         .show()
                 } else {
 
-                    addDataToFirebase(
-                        user,
-                        schoolName,
-                        paperCount,
-                        metalCount,
-                        glassCount,
-                        plasticCount,
-                        month,
-                        year,
-                        context
-                    )
+                    var selectedDate=month+year
+                    for (a:String in  fetchedData) {
+                        if (a == selectedDate) {
+
+                            isThere = !isThere
+                            break
+                        }
+                    }
+
+                    if(isThere){
+                        Toast.makeText(context,"Bu tarih için daha önce veri girişi yapılmış",Toast.LENGTH_SHORT).show()
+                        isThere=!isThere
+                    }else{
+                        addDataToFirebase(
+                            user,
+                            schoolName,
+                            paperCount,
+                            metalCount,
+                            glassCount,
+                            plasticCount,
+                            month,
+                            year,
+                            context
+                        )
+                        paperCount=""
+                        metalCount=""
+                        glassCount=""
+                        plasticCount=""
+                        month=""
+                        year=""
+
+                        navController.popBackStack()
+                    }
+
                 }
 
             }) {
@@ -474,14 +518,40 @@ fun addDataToFirebase(
         // we are displaying a success toast message.
         Toast.makeText(
             context,
-            "Your Course has been added to Firebase Firestore",
+            "Veri girişi başarılı",
             Toast.LENGTH_SHORT
         ).show()
 
     }.addOnFailureListener { e ->
         // this method is called when the data addition process is failed.
         // displaying a toast message when data addition is failed.
-        Toast.makeText(context, "Fail to add course \n$e", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Veri girişi başarısız \n$e", Toast.LENGTH_SHORT).show()
+    }
+}
+@Composable
+fun monthAndYearDataInformation(context: Context, scope:CoroutineScope, user:String?, fetchedData:SnapshotStateList<String>, wastesCollection: CollectionReference){
+
+    LaunchedEffect(key1 = Unit) {
+        scope.launch {
+            wastesCollection.get()
+                .addOnSuccessListener { result ->
+
+                    for (document in result) {
+
+                        val waste = document.toObject(Wastes::class.java)
+
+                        if(user==waste.schoolID){
+                            fetchedData.add(waste.month+waste.year)
+                            Log.d("DATE","month=${waste.month} and year=${waste.year} \n ")
+                        }
+
+                    }
+
+                }
+                .addOnFailureListener { exception ->
+                    // Handle error
+                }
+        }
     }
 
 }

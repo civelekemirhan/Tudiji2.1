@@ -23,10 +23,13 @@ import com.example.tudijit2.Navigations.Screen
 import com.example.tudijit2.R
 import com.example.tudijit2.ui.theme.newBackground
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
+    var auth: FirebaseAuth = FirebaseAuth.getInstance();
+    var user=auth.currentUser;
 
     var systemUiController = rememberSystemUiController()
     val darkTheme = isSystemInDarkTheme()
@@ -48,11 +51,22 @@ fun SplashScreen(navController: NavHostController) {
     LaunchedEffect(key1 = true){
         startAnimation=true
         delay(2000)
-        navController.navigate(Screen.LoginPage.route){
-            popUpTo(Screen.Splash.route) {
-                inclusive = true
+        if(user!=null){
+
+            navController.navigate(Screen.DetailPage.route){
+                popUpTo(Screen.Splash.route){
+                    inclusive=true
+                }
+            }
+
+        }else{
+            navController.navigate(Screen.LoginPage.route){
+                popUpTo(Screen.Splash.route) {
+                    inclusive = true
+                }
             }
         }
+
     }
 
     /*
